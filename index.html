@@ -1,0 +1,60 @@
+<html ng-app="Aplicacao">
+  <head>
+    <script type="text/javascript"
+            src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js">
+    </script>
+    <script type="text/javascript"
+            src="./ControllerCliente.js">
+    </script>
+  </head>
+  <body>
+    <div ng-controller="ControllerCliente">
+      {{clienteSelecionado}}
+      <br>
+      <form>
+        <fieldset>
+          <legend> Cadastro de Cliente </legend>
+
+          <div>
+            <label for="edtNome">Nome</label>
+            <input type="text"
+                   name="edtNome"
+                   ng-model="clienteSelecionado.nome">
+          </div>
+
+          <div>
+            <label for="edtSobrenome">Sobrenome</label>
+            <input type="text"
+                   name="edtSobrenome"
+                   ng-model="clienteSelecionado.sobrenome">
+          </div>
+
+          <div>
+            <button ng-click="cadastrar()">Cadastrar</button>
+          </div>
+        </fieldset>
+      </form>
+
+      {{clientes}}
+
+      <table border=1>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Sobrenome</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="cliente in clientes">
+            <td>{{cliente.nome}}</td>
+            <td>{{cliente.sobrenome}}</td>
+            <td>
+              <button ng-click="selecionar($index)">Selecionar</button>
+              <button ng-click="excluir($index)">Excluir</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
